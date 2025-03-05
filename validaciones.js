@@ -153,7 +153,7 @@ function actualizarBotonesAutenticacion() {
         if (linkLogin) linkLogin.style.display = 'none'; // Ocultar enlace de login
     } else {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'none'; // Ocultar botón de cerrar sesión
-        if (linkLogin) linkLogin.style.display = 'block'; // Mostrar enlace de login
+        if (linkLogin) linkLogin.style.display = 'none'; // Mostrar enlace de login
     }
 }
 
