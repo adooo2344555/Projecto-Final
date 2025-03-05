@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Cita - Clínica Dental Sonrisa Brillante</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 100px;
+        }
+        h2 {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .card {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Detalles de la Cita</h2>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Información de la Cita</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Nombre del Paciente:</strong> <span id="patientName"></span></p>
+                <p><strong>Doctor:</strong> <span id="doctor"></span></p>
+                <p><strong>Tipo de Consulta:</strong> <span id="consultationType"></span></p>
+                <p><strong>Fecha:</strong> <span id="appointmentDate"></span></p>
+                <p><strong>Hora:</strong> <span id="appointmentTime"></span></p>
+                <p><strong>Comentarios:</strong> <span id="comments"></span></p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="index.html" class="btn btn-primary">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para cargar los datos de la cita -->
+    <script>
+        // Función para cargar los datos de la cita
+        function cargarCita() {
+            const cita = JSON.parse(localStorage.getItem('appointmentData'));
+
+            if (cita) {
+                document.getElementById('patientName').textContent = cita.patientName || 'No especificado';
+                document.getElementById('doctor').textContent = cita.doctor || 'No especificado';
+                document.getElementById('consultationType').textContent = cita.consultationType || 'No especificado';
+                document.getElementById('appointmentDate').textContent = cita.appointmentDate || 'No especificado';
+                document.getElementById('appointmentTime').textContent = cita.appointmentTime || 'No especificado';
+                document.getElementById('comments').textContent = cita.comments || 'No hay comentarios';
+            } else {
+                document.querySelector('.card-body').innerHTML = '<p class="text-center">No hay una cita agendada.</p>';
+            }
+        }
+
+        // Llamar a la función al cargar la página
+        window.addEventListener('load', cargarCita);
+    </script>
+</body>
+</html>

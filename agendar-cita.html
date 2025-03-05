@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita - Clínica Dental Sonrisa Brillante</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 100px;
+        }
+        h2 {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            resize: none;
+        }
+
+
+        /* Estilos para el modal de reprogramación */
+#reprogramarCitaModal .modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+#reprogramarCitaModal .modal-header {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+#reprogramarCitaModal .modal-title {
+    font-weight: bold;
+}
+
+#reprogramarCitaModal .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#reprogramarCitaModal .btn-primary:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Agendar Cita</h2>
+        <form id="appointmentForm" class="row g-3">
+            <!-- Selección de Doctor -->
+            <div class="col-md-6">
+                <label for="doctor" class="form-label">Seleccione el Doctor:</label>
+                <select class="form-select" id="doctor" required>
+                    <option value="">Selecciona...</option>
+                    <option value="dr_perez">Dr. Pérez</option>
+                    <option value="dra_gomez">Dra. Gómez</option>
+                </select>
+            </div>
+            <!-- Tipo de consulta -->
+            <div class="col-md-6">
+                <label for="consultationType" class="form-label">Tipo de Consulta:</label>
+                <select class="form-select" id="consultationType" required>
+                    <option value="">Selecciona...</option>
+                    <option value="general">Consulta General</option>
+                    <option value="specialist">Especialista</option>
+                    <option value="emergency">Urgencias</option>
+                </select>
+            </div>
+            <!-- Fecha deseada -->
+            <div class="col-md-6">
+                <label for="appointmentDate" class="form-label">Fecha Deseada:</label>
+                <input type="date" class="form-control" id="appointmentDate" required>
+            </div>
+            <!-- Hora preferida -->
+            <div class="col-md-6">
+                <label for="appointmentTime" class="form-label">Hora Preferida:</label>
+                <input type="time" class="form-control" id="appointmentTime" required>
+            </div>
+            <!-- Comentarios adicionales -->
+            <div class="col-12">
+                <label for="comments" class="form-label">Comentarios Adicionales:</label>
+                <textarea class="form-control" id="comments" rows="4"></textarea>
+            </div>
+            <!-- Botón de enviar -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Agendar Cita</button>
+            </div>
+               <!-- Botón para abrir el modal de reprogramación -->
+            <div class="col-12 mt-3">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reprogramarCitaModal">
+                     Reprogramar Cita
+                </button>
+        </form>
+    </div>
+
+
+    
+<!-- Modal de Reprogramación de Cita -->
+<div class="modal fade" id="reprogramarCitaModal" tabindex="-1" aria-labelledby="reprogramarCitaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reprogramarCitaModalLabel">Reprogramar Cita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reprogramarCitaForm">
+                    <!-- Selección de Doctor -->
+                    <div class="mb-3">
+                        <label for="reprogramDoctor" class="form-label">Seleccione el Doctor:</label>
+                        <select class="form-select" id="reprogramDoctor" required>
+                            <option value="">Selecciona...</option>
+                            <option value="dr_perez">Dr. Pérez</option>
+                            <option value="dra_gomez">Dra. Gómez</option>
+                        </select>
+                    </div>
+                    <!-- Tipo de consulta -->
+                    <div class="mb-3">
+                        <label for="reprogramConsultationType" class="form-label">Tipo de Consulta:</label>
+                        <select class="form-select" id="reprogramConsultationType" required>
+                            <option value="">Selecciona...</option>
+                            <option value="general">Consulta General</option>
+                            <option value="specialist">Especialista</option>
+                            <option value="emergency">Urgencias</option>
+                        </select>
+                    </div>
+                    <!-- Nueva fecha deseada -->
+                    <div class="mb-3">
+                        <label for="newAppointmentDate" class="form-label">Nueva Fecha Deseada:</label>
+                        <input type="date" class="form-control" id="newAppointmentDate" required>
+                    </div>
+                    <!-- Nueva hora preferida -->
+                    <div class="mb-3">
+                        <label for="newAppointmentTime" class="form-label">Nueva Hora Preferida:</label>
+                        <input type="time" class="form-control" id="newAppointmentTime" required>
+                    </div>
+                    <!-- Comentarios adicionales -->
+                    <div class="mb-3">
+                        <label for="reprogramComments" class="form-label">Comentarios Adicionales:</label>
+                        <textarea class="form-control" id="reprogramComments" rows="3"></textarea>
+                    </div>
+                    <!-- Botón de enviar -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Reprogramar Cita</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="index.html" class="btn btn-primary">Volver al Inicio</a>
+</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para manejar el envío del formulario -->
+    <script src="validaciones.js"></script>
+    <script src="funciones.js"></script>
+
+
+</div>
+</body>
+</html>
