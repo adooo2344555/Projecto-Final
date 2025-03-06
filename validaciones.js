@@ -204,25 +204,21 @@ document.getElementById('loginForm')?.addEventListener('submit', function (event
 });
 
 // Función para verificar autenticación
-function verificarAutenticacion(mensaje) {
+function verificarAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-        alert(mensaje);
-        window.location.href = 'login.html';
-        return false;
+        alert('Debes iniciar sesión para agendar una cita.');
+        window.location.href = 'login.html'; // Redirigir al login si no está autenticado
+        return false; // Retorna false si no está autenticado
     }
-    return true;
+    return true; // Retorna true si está autenticado
 }
 
-// Verificar autenticación al cargar la página de "Agendar Cita" y "Contacto"
+// Verificar autenticación al cargar la página de "Agendar Cita"
 window.addEventListener('load', function () {
     if (window.location.pathname.includes('agendar-cita.html')) {
-        if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
-            return;
-        }
-    } else if (window.location.pathname.includes('contacto.html')) {
-        if (!verificarAutenticacion('Debes iniciar sesión para acceder al formulario de contacto.')) {
-            return;
+        if (!verificarAutenticacion()) {
+            return; // Detener la ejecución si no está autenticado
         }
     }
 });
@@ -232,8 +228,8 @@ document.getElementById('appointmentForm')?.addEventListener('submit', function 
     event.preventDefault();
 
     // Verificar autenticación antes de agendar la cita
-    if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
-        return;
+    if (!verificarAutenticacion()) {
+        return; // Detener la ejecución si no está autenticado
     }
 
     // Obtener el nombre del usuario autenticado
@@ -286,8 +282,8 @@ document.getElementById('reprogramarCitaForm')?.addEventListener('submit', funct
     event.preventDefault();
 
     // Verificar autenticación antes de reprogramar la cita
-    if (!verificarAutenticacion('Debes iniciar sesión para reprogramar una cita.')) {
-        return;
+    if (!verificarAutenticacion()) {
+        return; // Detener la ejecución si no está autenticado
     }
 
     // Obtener los valores del formulario
