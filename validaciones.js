@@ -145,24 +145,17 @@ document.getElementById('registerForm')?.addEventListener('submit', function (ev
 // Función para actualizar la visibilidad de los botones de autenticación
 function actualizarBotonesAutenticacion() {
     console.log("localStorage:", localStorage); // Agrega esta línea
+
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
-    console.log("linkLogin:", linkLogin); // Verifica si se encuentra el elemento linkLogin
     const linkLogin = document.querySelector('a[href="login.html"]');
-    console.log("Actualizando botones...");
-    console.log("localStorage:", localStorage);
-    console.log("usuarioAutenticado:", usuarioAutenticado);
-    console.log("btnCerrarSesion:", btnCerrarSesion); // Verifica si se encuentra el elemento btnCerrar
-    // ... el resto del código
 
     if (usuarioAutenticado === 'true') {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'block'; // Mostrar botón de cerrar sesión
-        console.log("linkLogin:", linkLogin); // Verifica si se encuentra el elemento linkLogin
         if (linkLogin) linkLogin.style.display = 'none'; // Ocultar enlace de login
-        console.log("linkLogin display:", window.getComputedStyle(linkLogin).display); // Verifica el estilo calculado
     } else {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'none'; // Ocultar botón de cerrar sesión
-        if (linkLogin) linkLogin.style.display = 'block'; // Mostrar enlace de login
+        if (linkLogin) linkLogin.style.display = 'none'; // Mostrar enlace de login
     }
 }
 
