@@ -220,10 +220,6 @@ window.addEventListener('load', function () {
         if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
             return;
         }
-    } else if (window.location.pathname.includes('contacto.html')) {
-        if (!verificarAutenticacion('Debes iniciar sesión para acceder al formulario de contacto.')) {
-            return;
-        }
     }
 });
 
