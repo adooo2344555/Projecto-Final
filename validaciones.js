@@ -148,6 +148,10 @@ function actualizarBotonesAutenticacion() {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
     const linkLogin = document.querySelector('a[href="login.html"]');
+    console.log("Actualizando botones...");
+    console.log("localStorage:", localStorage);
+    console.log("usuarioAutenticado:", usuarioAutenticado);
+    // ... el resto del código
 
     if (usuarioAutenticado === 'true') {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'block'; // Mostrar botón de cerrar sesión
