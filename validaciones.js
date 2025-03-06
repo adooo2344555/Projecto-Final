@@ -204,10 +204,10 @@ document.getElementById('loginForm')?.addEventListener('submit', function (event
 });
 
 // Función para verificar autenticación
-function verificarAutenticacion() {
+function verificarAutenticacion(mensaje) {
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     if (!usuarioAutenticado || usuarioAutenticado !== 'true') {
-        alert('tiene que autenticarse para agenda una cita');
+        alert(mensaje);
         window.location.href = 'login.html';
         return false;
     }
@@ -218,6 +218,10 @@ function verificarAutenticacion() {
 window.addEventListener('load', function () {
     if (window.location.pathname.includes('agendar-cita.html')) {
         if (!verificarAutenticacion('Debes iniciar sesión para agendar una cita.')) {
+            return;
+        }
+    } else if (window.location.pathname.includes('contacto.html')) {
+        if (!verificarAutenticacion('Debes iniciar sesión para acceder al formulario de contacto.')) {
             return;
         }
     }
