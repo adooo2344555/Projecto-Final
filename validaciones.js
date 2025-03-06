@@ -150,7 +150,7 @@ function actualizarBotonesAutenticacion() {
 
     if (usuarioAutenticado === 'true') {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'block'; // Mostrar botón de cerrar sesión
-        if (linkLogin) linkLogin.style.display = 'block'; // Ocultar enlace de login
+        if (linkLogin) linkLogin.style.display = 'none'; // Ocultar enlace de login
     } else {
         if (btnCerrarSesion) btnCerrarSesion.style.display = 'none'; // Ocultar botón de cerrar sesión
         if (linkLogin) linkLogin.style.display = 'block'; // Mostrar enlace de login
