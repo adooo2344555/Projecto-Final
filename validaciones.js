@@ -144,6 +144,7 @@ document.getElementById('registerForm')?.addEventListener('submit', function (ev
 
 // Función para actualizar la visibilidad de los botones de autenticación
 function actualizarBotonesAutenticacion() {
+    console.log("localStorage:", localStorage); // Agrega esta línea
     const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
     const linkLogin = document.querySelector('a[href="login.html"]');
