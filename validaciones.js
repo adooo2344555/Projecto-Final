@@ -151,6 +151,8 @@ function actualizarBotonesAutenticacion() {
     console.log("Actualizando botones...");
     console.log("localStorage:", localStorage);
     console.log("usuarioAutenticado:", usuarioAutenticado);
+    console.log("linkLogin:", linkLogin); // Verifica si se encuentra el elemento linkLogin
+    console.log("btnCerrarSesion:", btnCerrarSesion); // Verifica si se encuentra el elemento btnCerrar
     // ... el resto del código
 
     if (usuarioAutenticado === 'true') {
